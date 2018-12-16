@@ -1,28 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Admin, Resource } from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
+import UserIcon from '@material-ui/icons/Group';
+import lista from './components/list'
+let providerUrl = 'https://swapi.co/api';
+let dataProvider = jsonServerProvider(providerUrl)
+const App = () => (
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+      <Admin  dataProvider = {dataProvider}>
+        <Resource name="people" list={lista}  icon={UserIcon}/>
+      </Admin>
+)   
 
 export default App;
